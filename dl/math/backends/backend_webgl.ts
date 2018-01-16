@@ -215,6 +215,7 @@ export class MathBackendWebGL implements MathBackend {
       throw new Error('WebGL is not supported on this device');
     }
     if (gpgpu == null) {
+      //console.log("new context");
       const gl = gpgpu_util.createWebGLContext();
       this.gpgpu = new GPGPUContext(gl);
       this.gpgpuCreatedLocally = true;
@@ -857,6 +858,7 @@ export class MathBackendWebGL implements MathBackend {
     this.textureManager.dispose();
 
     if (this.gpgpuCreatedLocally) {
+      //console.log('dispose context');
       this.gpgpu.dispose();
     }
   }

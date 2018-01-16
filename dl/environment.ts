@@ -229,6 +229,10 @@ export class Environment {
   }
 
   reset() {
+    //for (var key in this.backendRegistry) {
+    //  if (!this.backendRegistry.hasOwnProperty(key)) continue;
+    //  this.backendRegistry[key].dispose();
+    //}
     this.globalMath = null;
     this.backendRegistry = this.prevBackendRegistry;
     this.features = getFeaturesFromURL();

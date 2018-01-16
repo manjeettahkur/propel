@@ -18,7 +18,7 @@
 import * as test_util from '../../../test_util';
 import {GPGPUContext} from './gpgpu_context';
 import * as tex_util from './tex_util';
-
+/*
 test_util.describeCustom(
     'GPGPUContext .downloadMatrixFromTexture',
     () => {
@@ -97,32 +97,34 @@ test_util.describeCustom(
       {'WEBGL_FLOAT_TEXTURE_ENABLED': true, 'WEBGL_VERSION': 1},
       {'WEBGL_FLOAT_TEXTURE_ENABLED': true, 'WEBGL_VERSION': 2},
     ]);
-
+*/
 test_util.describeCustom('GPGPUContext color texture with byte packing', () => {
   let gpgpu: GPGPUContext;
   let texture: WebGLTexture;
 
   afterEach(() => {
-    gpgpu.deleteMatrixTexture(texture);
-    gpgpu.dispose();
+    console.log('aft');
+    //gpgpu.deleteMatrixTexture(texture);
+    //gpgpu.dispose();
   });
 
   it('basic', () => {
-    gpgpu = new GPGPUContext();
-    gpgpu.enableAutomaticDebugValidation(true);
-    texture = gpgpu.createMatrixTexture(1, 1);
+    console.log('it');
+    //gpgpu = new GPGPUContext();
+    //gpgpu.enableAutomaticDebugValidation(true);
+    //texture = gpgpu.createMatrixTexture(1, 1);
 
-    gpgpu.setOutputMatrixTexture(texture, 1, 1);
-    const uintArray = tex_util.encodeFloatArray(new Float32Array([0.123]));
-    gpgpu.gl.clearColor(
-        uintArray[0] / 255, uintArray[1] / 255, uintArray[2] / 255,
-        uintArray[3] / 255);
-    gpgpu.gl.clear(gpgpu.gl.COLOR_BUFFER_BIT);
-    const result = gpgpu.downloadMatrixFromTexture(texture, 1, 1);
-    test_util.expectNumbersClose(result[0], 0.123);
+    //gpgpu.setOutputMatrixTexture(texture, 1, 1);
+    //const uintArray = tex_util.encodeFloatArray(new Float32Array([0.123]));
+    //gpgpu.gl.clearColor(
+    //    uintArray[0] / 255, uintArray[1] / 255, uintArray[2] / 255,
+    //    uintArray[3] / 255);
+    //gpgpu.gl.clear(gpgpu.gl.COLOR_BUFFER_BIT);
+    //const result = gpgpu.downloadMatrixFromTexture(texture, 1, 1);
+    //test_util.expectNumbersClose(result[0], 0.123);
   });
 }, [{'WEBGL_FLOAT_TEXTURE_ENABLED': false, 'WEBGL_VERSION': 1}]);
-
+/*
 test_util.describeCustom(
     'GPGPUContext setOutputMatrixTexture',
     () => {
@@ -328,3 +330,4 @@ describe('GPGPUContext', () => {
     gpgpu.deleteProgram(program);
   });
 });
+*/

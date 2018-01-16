@@ -22,18 +22,18 @@ const TESTS = [
   // The test harness logs "DONE bla bla" to the console when done.
   // If this message doesn't appear, or an unhandled error is thrown on the
   // page, the test fails.
-  {
-    doneMsg: /^DONE.*failed: 0/,
-    href: "test_isomorphic.html",
-    timeout: 30 * 1000
-  },
+//  {
+//    doneMsg: /^DONE.*failed: 0/,
+//    href: "test_isomorphic.html",
+//    timeout: 30 * 1000
+//  },
   { href: "test_dl.html", doneMsg: /^DONE.*failed: 0/, timeout: 2 * 60 * 1000 },
 
   // These web pages are simply loaded; the test passes if no unhandled
   // exceptions are thrown on the page.
-  { href: "index.html" },
-  { href: "notebook.html" },
-  { href: "notebook_mnist.html" }
+  //{ href: "index.html" },
+  //{ href: "notebook.html" },
+  //{ href: "notebook_mnist.html" }
 ];
 
 const debug = !!process.env.PP_DEBUG;

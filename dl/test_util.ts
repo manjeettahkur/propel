@@ -345,11 +345,15 @@ export function executeTests(
     customIt: (expectation: string, testFunc: () => void|Promise<void>) =>
         void = PROMISE_IT) {
   describe(testName, () => {
+    let backends = [];
+
     beforeEach(() => {
       if (features != null) {
         ENV.setFeatures(features);
-        ENV.registerBackend('webgl', () => new MathBackendWebGL());
-        ENV.registerBackend('cpu', () => new MathBackendCPU());
+        ENV.registerBackend('webgl', 
+            () => backends[backends.length] = new MathBackendWebGL());
+        ENV.registerBackend('cpu', 
+            () => backends[backends.length] = new MathBackendCPU());
       }
 
       if (customBeforeEach != null) {
@@ -363,6 +367,9 @@ export function executeTests(
       }
       if (features != null) {
         ENV.reset();
+      }
+      for (const backend of backends.splice(0)) {
+        backend.dispose();
       }
     });
 
